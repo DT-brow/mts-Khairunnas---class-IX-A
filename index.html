@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTS Khairunnas - Kelas IX A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0533 0%, #2d1b69 25%, #4a1a8a 50%, #2d1b69 75%, #1a0533 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Particles */
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            text-align: center;
+            padding: 30px 16px 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+        }
+
+        .logo {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative; z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover { transform: scale(1.1) rotate(5deg); }
+
+        .school-name {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #c084fc 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .school-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .school-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            padding: 0 10px;
+            font-weight: 300;
+        }
+
+        /* ============ GLASS CARD ============ */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+        }
+
+        /* ============ MENU ============ */
+        .menu-section {
+            padding: 0 4px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .card-big {
+            position: relative;
+            overflow: hidden;
+            padding: 28px 24px;
+            margin-bottom: 14px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .card-big:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+        }
+
+        .card-big-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(225,29,72,0.3), rgba(168,85,247,0.3), rgba(59,130,246,0.3));
+        }
+
+        .card-big-content {
+            position: relative; z-index: 1;
+            display: flex; align-items: center;
+        }
+
+        .card-big .card-icon {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #f43f5e, #a855f7, #3b82f6);
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 25px rgba(168,85,247,0.4);
+            flex-shrink: 0;
+        }
+
+        .card-big .card-text { flex: 1; margin-left: 16px; }
+        .card-big .card-text h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .card-big .card-text p { font-size: 12px; opacity: 0.7; font-weight: 300; }
+
+        .card-big .card-arrow {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .card-big:hover .card-arrow { transform: translateX(4px); }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .card-small {
+            padding: 22px 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+
+        .card-small:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 15px 40px rgba(168,85,247,0.25);
+        }
+
+        .card-small .card-small-icon {
+            width: 48px; height: 48px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 14px;
+        }
+
+        .card-small:nth-child(1) .card-small-icon {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+        }
+
+        .card-small:nth-child(2) .card-small-icon {
+            background: linear-gradient(135deg, #f43f5e, #fb923c);
+        }
+
+        .card-small h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+        .card-small p { font-size: 11px; opacity: 0.6; font-weight: 300; }
+
+        /* ============ SECTION TITLE ============ */
+        .section-title {
+            font-size: 18px; font-weight: 700;
+            margin-bottom: 18px; padding: 0 4px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .section-title .emoji { font-size: 22px; }
+
+        .section-title-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(to right, rgba(168,85,247,0.5), transparent);
+            margin-left: 8px;
+        }
+
+        /* ============ FOTO UTAMA ============ */
+        .foto-section {
+            margin-bottom: 36px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .foto-card {
+            padding: 0;
+            overflow: hidden;
+            margin-bottom: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .foto-card:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 20px 60px rgba(168,85,247,0.3);
+        }
+
+        .foto-card-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .foto-card-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            pointer-events: none;
+        }
+
+        /* === KEY FIX: gambar tidak blur === */
+        .foto-card-img {
+            width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: cover;
+            display: block;
+            image-rendering: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .foto-card:hover .foto-card-img { transform: scale(1.03); }
+
+        .foto-card-info { padding: 18px 20px; }
+
+        .foto-card-info .kelas-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            padding: 4px 14px; border-radius: 12px;
+            font-size: 11px; font-weight: 600;
+            margin-bottom: 8px; letter-spacing: 1px;
+        }
+
+        .foto-card-info h4 { font-size: 13px; font-weight: 400; opacity: 0.7; }
+        .foto-card-info h4 span { font-weight: 600; color: #c084fc; }
+
+        /* ============ GALLERY ============ */
+        .gallery-section {
+            margin-bottom: 36px;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .gallery-slider {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 4px 4px 20px;
+            scrollbar-width: none;
+        }
+
+        .gallery-slider::-webkit-scrollbar { display: none; }
+
+        .gallery-item {
+            flex: 0 0 280px;
+            scroll-snap-align: center;
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 15px 40px rgba(168,85,247,0.3);
+        }
+
+        /* === KEY FIX: gallery gambar tidak blur === */
+        .gallery-item img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+            image-rendering: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        .gallery-item-overlay i { font-size: 20px; }
+
+        .scroll-indicator {
+            display: flex; justify-content: center;
+            gap: 6px; margin-top: 4px;
+        }
+
+        .scroll-dot {
+            width: 6px; height: 6px; border-radius: 3px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-dot.active { width: 24px; background: #a855f7; }
+
+        .swipe-hint {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px; font-size: 11px;
+            opacity: 0.4; margin-bottom: 12px;
+            animation: swipeHint 2s ease-in-out infinite;
+        }
+
+        @keyframes swipeHint {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-8px); }
+        }
+
+        /* ============ SISWA ============ */
+        .siswa-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .siswa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .siswa-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .siswa-card:hover {
+            transform: translateX(6px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .siswa-number {
+            width: 36px; height: 36px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .siswa-card:nth-child(odd) .siswa-number {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+        }
+
+        .siswa-card:nth-child(even) .siswa-number {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+        }
+
+        .siswa-name { font-size: 13px; font-weight: 500; flex: 1; }
+        .siswa-gender { font-size: 22px; line-height: 1; flex-shrink: 0; }
+
+        .siswa-search { position: relative; margin-bottom: 14px; }
+
+        .siswa-search input {
+            width: 100%;
+            padding: 14px 18px 14px 46px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .siswa-search input::placeholder { color: rgba(255,255,255,0.3); }
+        .siswa-search input:focus { border-color: #a855f7; background: rgba(255,255,255,0.12); }
+
+        .siswa-search i {
+            position: absolute;
+            left: 16px; top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        .siswa-count {
+            font-size: 12px; opacity: 0.5;
+            text-align: right; margin-bottom: 10px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            text-align: center;
+            padding: 30px 16px 40px;
+            animation: fadeInUp 0.8s ease 1s both;
+        }
+
+        .footer-divider {
+            width: 60px; height: 3px;
+            background: linear-gradient(to right, #a855f7, #7c3aed);
+            border-radius: 2px;
+            margin: 0 auto 20px;
+        }
+
+        .footer p { font-size: 12px; opacity: 0.5; font-weight: 300; line-height: 1.8; }
+        .footer .heart { color: #f43f5e; display: inline-block; animation: heartbeat 1.5s ease-in-out infinite; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ============ LIGHTBOX ============ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .lightbox.active { display: flex; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* === KEY FIX: lightbox gambar tidak blur === */
+        .lightbox img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            object-fit: contain;
+            animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            image-rendering: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: white; font-size: 20px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            color: white; font-size: 18px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-prev { left: 12px; }
+        .lightbox-next { right: 12px; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px; font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.5);
+            padding: 6px 16px; border-radius: 20px;
+        }
+
+        /* ============ MODALS ============ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2d1b69, #1a0533);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 28px 28px 16px 16px;
+            width: 100%; max-width: 460px;
+            padding: 30px 24px;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-handle {
+            width: 40px; height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin: 0 auto 20px;
+        }
+
+        .modal-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; text-align: center; }
+        .modal-content .modal-subtitle { font-size: 13px; opacity: 0.6; text-align: center; margin-bottom: 24px; }
+
+        .modal-content textarea {
+            width: 100%; min-height: 120px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 18px;
+            padding: 16px; color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px; resize: vertical;
+            outline: none; transition: border-color 0.3s ease;
+        }
+
+        .modal-content textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .modal-content textarea:focus { border-color: #a855f7; }
+
+        .send-btn {
+            width: 100%; padding: 15px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border: none; border-radius: 16px;
+            color: white; font-family: 'Poppins', sans-serif;
+            font-size: 15px; font-weight: 600;
+            cursor: pointer; margin-top: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(168,85,247,0.4); }
+
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            width: 32px; height: 32px;
+            background: rgba(255,255,255,0.1);
+            border: none; border-radius: 50%;
+            color: white; font-size: 14px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover { background: rgba(255,255,255,0.2); }
+
+        .memory-modal-content { max-height: 80vh; overflow-y: auto; }
+        .memory-modal-content::-webkit-scrollbar { width: 4px; }
+        .memory-modal-content::-webkit-scrollbar-thumb { background: rgba(168,85,247,0.5); border-radius: 2px; }
+
+        .memory-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            padding: 18px; margin-bottom: 12px;
+        }
+
+        .memory-card .memory-date { font-size: 11px; opacity: 0.5; margin-bottom: 8px; }
+        .memory-card .memory-text { font-size: 14px; line-height: 1.7; font-weight: 300; }
+        .memory-card .memory-author { font-size: 12px; opacity: 0.6; margin-top: 10px; font-style: italic; }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white; padding: 14px 28px;
+            border-radius: 16px; font-size: 14px; font-weight: 500;
+            z-index: 2000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* Scroll Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border: none; border-radius: 50%;
+            color: white; font-size: 18px;
+            cursor: pointer; z-index: 100;
+            opacity: 0; transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(168,85,247,0.4);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px); }
+
+        @media (max-width: 360px) {
+            .school-name { font-size: 22px; }
+            .card-big .card-text h3 { font-size: 17px; }
+            .gallery-item { flex: 0 0 260px; }
+            .gallery-item img { height: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-particles" id="particles"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo-wrapper">
+                <div class="logo-glow"></div>
+                <img src="https://i.postimg.cc/8cvHwZ3j/Background-Eraser-20260406-165720948.png" alt="Logo MTS Khairunnas" class="logo">
+            </div>
+            <h1 class="school-name">MTS KHAIRUNNAS</h1>
+            <div class="school-badge">classs IX A</div>
+            <p class="school-desc">Kelas IX penuh kenangan, cerita, dan perjalanan yang tak terlupakan </p>
+        </header>
+
+        <!-- MENU -->
+        <section class="menu-section">
+            <a href="https://www.instagram.com/mtskhairunnas08?igsh=MWs1ejEyNm9qemVkcw==" target="_blank" class="card-big glass">
+                <div class="card-big-bg"></div>
+                <div class="card-big-content">
+                    <div class="card-icon"><i class="fab fa-instagram"></i></div>
+                    <div class="card-text">
+                        <h3>Instagram Sekolah</h3>
+                        <p>Lihat Selengkapnya</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <div class="cards-grid">
+                <div class="card-small glass" id="memoryCard">
+                    <div class="card-small-icon"><i class="fas fa-image"></i></div>
+                    <h4>Memory Website</h4>
+                    <p>Lihat kenangan kita</p>
+                </div>
+                <div class="card-small glass" id="anonCard">
+                    <div class="card-small-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h4>Pesan Anonim</h4>
+                    <p>Kirim pesan rahasia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOTO UTAMA -->
+        <section class="foto-section">
+            <div class="section-title">
+                <span class="emoji">📸</span>
+                Foto Utama Kelas
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="foto-card glass" onclick="openLightboxSingle('https://i.postimg.cc/pVnLYBwy/IMG_20260406_WA0062.jpg')">
+                <div class="foto-card-img-wrapper">
+                    <img src="https://i.postimg.cc/pVnLYBwy/IMG_20260406_WA0062.jpg" alt="Kelas VII" class="foto-card-img">
+                </div>
+                <div class="foto-card-info">
+                    <div class="kelas-badge">KELAS VII A</div>
+                    <h4>Wali Kelas: <span>DESI RAHMAWATI</span></h4>
+                </div>
+            </div>
+
+            <div class="foto-card glass" onclick="openLightboxSingle('https://i.postimg.cc/PJZfXtWb/IMG_20260406_WA0073.png')">
+                <div class="foto-card-img-wrapper">
+                    <img src="https://i.postimg.cc/PJZfXtWb/IMG_20260406_WA0073.png" alt="Kelas VIII" class="foto-card-img">
+                </div>
+                <div class="foto-card-info">
+                    <div class="kelas-badge">KELAS VIII A</div>
+                    <h4>Wali Kelas: <span>EUIS NURMALINATUROSIDAH</span></h4>
+                </div>
+            </div>
+
+            <div class="foto-card glass" onclick="openLightboxSingle('https://i.postimg.cc/vT98YQr5/IMG_20260406_WA0078.jpg')">
+                <div class="foto-card-img-wrapper">
+                    <img src="https://i.postimg.cc/vT98YQr5/IMG_20260406_WA0078.jpg" alt="Kelas IX" class="foto-card-img">
+                </div>
+                <div class="foto-card-info">
+                    <div class="kelas-badge">KELAS IX A</div>
+                    <h4>Wali Kelas: <span>AHMAD GHATSAGHAUTSAN</span></h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery-section">
+            <div class="section-title">
+                <span class="emoji">🖼️</span>
+                Class Gallery
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="swipe-hint">
+                <i class="fas fa-hand-point-left"></i>
+                Geser untuk melihat lebih banyak
+            </div>
+
+            <div class="gallery-slider-wrapper">
+                <div class="gallery-slider" id="gallerySlider"></div>
+                <div class="scroll-indicator" id="scrollIndicator"></div>
+            </div>
+        </section>
+
+        <!-- SISWA -->
+        <section class="siswa-section">
+            <div class="section-title">
+                <span class="emoji">🧑‍🎓</span>
+                Daftar Siswa-Siswi Class IX A
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="siswa-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="siswaSearch" placeholder="Cari nama siswa...">
+            </div>
+
+            <div class="siswa-count" id="siswaCount"></div>
+            <div class="siswa-list" id="siswaList"></div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-divider"></div>
+            <p>
+                 <span class="heart"></span> by class IX A
+                <br>MTS Khairunnas © 2026
+                <br><br>
+                <span style="opacity:0.4;">Semoga perjalanan ini menjadi cerita indah yang selalu dikenang</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightboxImg" src="" alt="Image">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- PESAN ANONIM MODAL -->
+    <div class="modal-overlay" id="anonModal">
+        <div class="modal-content">
+            <div class="modal-handle"></div>
+            <button class="modal-close" onclick="closeModal('anonModal')"><i class="fas fa-times"></i></button>
+            <h3>✉️ Pesan Anonim</h3>
+            <p class="modal-subtitle">Tulis pesan rahasiamu untuk teman sekelas</p>
+            <textarea id="anonMessage" placeholder="Tulis pesan kamu di sini... (pesan akan anonim)"></textarea>
+            <button class="send-btn" onclick="sendAnonMessage()"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+        </div>
+    </div>
+
+    <!-- MEMORY MODAL -->
+    <div class="modal-overlay" id="memoryModal">
+        <div class="modal-content memory-modal-content">
+            <div class="modal-handle"></div>
+            <button class="modal-close" onclick="closeModal('memoryModal')"><i class="fas fa-times"></i></button>
+            <h3>📖 Kenangan Kita</h3>
+            <p class="modal-subtitle">Momen-momen berharga yang tak terlupakan</p>
+
+            <div class="memory-card">
+                <div class="memory-date">1️⃣ Awal Masuk Kelas VII</div>
+                <div class="memory-text">Hari pertama masuk sekolah, semuanya terasa asing. Tapi dari situ kita mulai menemukan teman-teman yang luar biasa. 🌟</div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-date">2️⃣ Kelas VIII - Masa penuh tawa</div>
+                <div class="memory-text">Masa di mana tawa dan kebahagiaan mengalir bebas, menjadi bukti yakni kita pernah ada dalam kenangan yang sama. Masa itu bagaikan mimpi indah, singkat namun abadi, meninggalkan kesan yang tak pernah terlupakan. ✨</div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-date">3️⃣ Kelas IX - Perpisahan yang Berarti</div>
+                <div class="memory-text">Tahun terakhir yang penuh tekanan dan kebahagiaan. Setiap tawa dan air mata di kelas ini akan selalu teringat. Sampai bertemu lagi di masa depan! 🎓</div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-date">💭 Pesan untuk Semua</div>
+                <div class="memory-text">Jangan pernah lupakan kenangan di MTS Khairunnas. Meskipun jalan kita berbeda, hati kita tetap satu. Sukses selalu untuk semua teman-teman Kelas IX A! 🚀</div>
+                <div class="memory-author">— Kelas IX A MTS Khairunnas</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- SCROLL TOP -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // ========== DATA ==========
+        const galleryImages = [
+            'https://i.postimg.cc/hhsBvhfn/IMG-20260406-WA0058.jpg',
+            'https://i.postimg.cc/NLDcFLLZ/IMG-20260406-WA0060.jpg',
+            'https://i.postimg.cc/rzjkszKM/IMG-20260406-WA0061.jpg',
+            'https://i.postimg.cc/rzMTq5FL/IMG-20260406-WA0062.jpg',
+            'https://i.postimg.cc/kDqC7WXr/IMG-20260406-WA0066.jpg',
+            'https://i.postimg.cc/K4xbmtvh/IMG-20260406-WA0067.jpg',
+            'https://i.postimg.cc/K4xbmtcp/IMG-20260406-WA0068.jpg',
+            'https://i.postimg.cc/Sjk4mcQZ/IMG-20260406-WA0069.jpg',
+            'https://i.postimg.cc/PvXnKnFN/IMG-20260406-WA0073.png',
+            'https://i.postimg.cc/vDbyG58z/IMG-20260406-WA0075.jpg',
+            'https://i.postimg.cc/vDbyG58L/IMG-20260406-WA0076.jpg',
+            'https://i.postimg.cc/nMpxnqV4/IMG-20260406-WA0077.jpg',
+            'https://i.postimg.cc/kRJPwPh5/IMG-20260406-WA0078.jpg',
+            'https://i.postimg.cc/YLrB8Byr/IMG-20260406-WA0079.jpg',
+            'https://i.postimg.cc/s1sz35f5/IMG-20260406-WA0081.jpg',
+            'https://i.postimg.cc/F1p4z11q/IMG-20260406-WA0082.jpg',
+            'https://i.postimg.cc/8s4Scss0/IMG-20260406-WA0083.jpg',
+            'https://i.postimg.cc/NLDcFLL3/IMG-20260406-WA0084.jpg',
+            'https://i.postimg.cc/nMpxnqVW/IMG-20260406-WA0086.jpg',
+            'https://i.postimg.cc/Dmnh71fB/IMG-20260406-WA0087.jpg',
+            'https://i.postimg.cc/xqnQ9LjM/IMG-20260406-WA0088.jpg',
+            'https://i.postimg.cc/5jbJf89w/IMG-20260406-WA0089.jpg',
+            'https://i.postimg.cc/z38NqTDW/IMG-20260406-WA0091.jpg',
+            'https://i.postimg.cc/0Kk1Z1H5/IMG-20260406-WA0092.jpg'
+        ];
+
+        const students = [
+            { name: 'AHMAD ADITIA', gender: 'L' },
+            { name: 'AHMAD RAMDANI', gender: 'L' },
+            { name: 'AMELIA PUTRI', gender: 'P' },
+            { name: 'ANDRI', gender: 'L' },
+            { name: 'HAMZAH MAKNUN', gender: 'L' },
+            { name: 'HANA KAMILA SIROJ', gender: 'P' },
+            { name: 'IBNI ABDILAH', gender: 'L' },
+            { name: 'MERI RAHMAWATI', gender: 'P' },
+            { name: 'M. AFLAH MUBAROK', gender: 'L' },
+            { name: 'M. FAHRI RINALDI', gender: 'L' },
+            { name: 'MUHAMAD ILYAS', gender: 'L' },
+            { name: 'NAJIH MASAHAL LIJAJ', gender: 'L' },
+            { name: 'NAJWA AULIA DESTIANI', gender: 'P' },
+            { name: 'RAISHA DWI APRILIA', gender: 'P' },
+            { name: 'SITI MAESAROH', gender: 'P' }
+        ];
+
+        // ========== PARTICLES ==========
+        function createParticles() {
+            const c = document.getElementById('particles');
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                p.style.animationDelay = (Math.random() * 10) + 's';
+                const s = (Math.random() * 3 + 2) + 'px';
+                p.style.width = s;
+                p.style.height = s;
+                c.appendChild(p);
+            }
+        }
+
+        // ========== GALLERY ==========
+        function initGallery() {
+            const slider = document.getElementById('gallerySlider');
+            const indicator = document.getElementById('scrollIndicator');
+
+            galleryImages.forEach((src, i) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <img src="${src}" alt="Gallery ${i+1}">
+                    <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+                `;
+                item.addEventListener('click', () => openLightbox(i));
+                slider.appendChild(item);
+            });
+
+            const dotCount = Math.min(5, galleryImages.length);
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+                indicator.appendChild(dot);
+            }
+
+            slider.addEventListener('scroll', () => {
+                const pct = slider.scrollLeft / (slider.scrollWidth - slider.clientWidth);
+                const dots = indicator.querySelectorAll('.scroll-dot');
+                const active = Math.round(pct * (dots.length - 1));
+                dots.forEach((d, i) => d.classList.toggle('active', i === active));
+            });
+        }
+
+        // ========== STUDENTS ==========
+        function renderStudents(list) {
+            const container = document.getElementById('siswaList');
+            container.innerHTML = '';
+
+            list.forEach((s, i) => {
+                const card = document.createElement('div');
+                card.className = 'siswa-card glass';
+                const emoji = s.gender === 'P' ? '🧕' : '👦';
+                card.innerHTML = `
+                    <div class="siswa-number">${i + 1}</div>
+                    <div class="siswa-name">${s.name}</div>
+                    <div class="siswa-gender">${emoji}</div>
+                `;
+                container.appendChild(card);
+            });
+
+            const laki = list.filter(s => s.gender === 'L').length;
+            const perempuan = list.filter(s => s.gender === 'P').length;
+            document.getElementById('siswaCount').textContent =
+                `${list.length} siswa — 👦 ${laki} siswa  🧕 ${perempuan} siswi`;
+        }
+
+        document.getElementById('siswaSearch').addEventListener('input', function() {
+            const q = this.value.toLowerCase();
+            renderStudents(students.filter(s => s.name.toLowerCase().includes(q)));
+        });
+
+        // ========== LIGHTBOX ==========
+        let currentIdx = 0;
+        let lbMode = 'gallery';
+
+        function openLightbox(index) {
+            lbMode = 'gallery';
+            currentIdx = index;
+            const img = document.getElementById('lightboxImg');
+            img.src = galleryImages[index];
+            img.style.transition = 'none';
+            document.getElementById('lightboxCounter').textContent = `${index+1} / ${galleryImages.length}`;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.lightbox-prev').style.display = 'flex';
+            document.querySelector('.lightbox-next').style.display = 'flex';
+            document.getElementById('lightboxCounter').style.display = 'block';
+        }
+
+        function openLightboxSingle(src) {
+            lbMode = 'single';
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            img.style.transition = 'none';
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.lightbox-prev').style.display = 'none';
+            document.querySelector('.lightbox-next').style.display = 'none';
+            document.getElementById('lightboxCounter').style.display = 'none';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(dir) {
+            if (lbMode !== 'gallery') return;
+            currentIdx += dir;
+            if (currentIdx < 0) currentIdx = galleryImages.length - 1;
+            if (currentIdx >= galleryImages.length) currentIdx = 0;
+            const img = document.getElementById('lightboxImg');
+            img.src = galleryImages[currentIdx];
+            document.getElementById('lightboxCounter').textContent = `${currentIdx+1} / ${galleryImages.length}`;
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        let touchStartX = 0;
+        document.getElementById('lightbox').addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+        document.getElementById('lightbox').addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? navigateLightbox(1) : navigateLightbox(-1);
+            }
+        });
+
+        // ========== MODALS ==========
+        document.getElementById('anonCard').addEventListener('click', () => {
+            document.getElementById('anonModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('memoryCard').addEventListener('click', () => {
+            document.getElementById('memoryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) closeModal(this.id);
+            });
+        });
+
+        function sendAnonMessage() {
+            const ta = document.getElementById('anonMessage');
+            if (!ta.value.trim()) {
+                showToast('Tulis pesan dulu ya! ✍️', 'warning');
+                ta.focus();
+                return;
+            }
+            const btn = document.querySelector('.send-btn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pesan';
+                btn.disabled = false;
+                ta.value = '';
+                closeModal('anonModal');
+                showToast('Pesan anonim berhasil dikirim! ✉️');
+            }, 1500);
+        }
+
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            t.style.background = type === 'warning'
+                ? 'linear-gradient(135deg, #f59e0b, #d97706)'
+                : 'linear-gradient(135deg, #10b981, #059669)';
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        // ========== SCROLL TOP ==========
+        window.addEventListener('scroll', () => {
+            document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // ========== SCROLL REVEAL ==========
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        // ========== INIT ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initGallery();
+            renderStudents(students);
+
+            // Scroll reveal for cards
+            document.querySelectorAll('.foto-card, .siswa-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
